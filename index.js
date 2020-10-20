@@ -5,7 +5,7 @@ module.exports = function (seconds) {
 
   if (timeArray.some(isNaN))
     throw new TypeError(
-      'hms: invalid function argument - please check if argument format is "number" or "number:number" or "number:number:number"'
+      'timeToSeconds: invalid function argument - please check if argument format is "number" or "number:number" or "number:number:number"'
     );
 
   switch (timeArray.length) {
@@ -17,7 +17,7 @@ module.exports = function (seconds) {
       return +timeArray[0];
     default:
       throw new TypeError(
-        'hms: too many semicolons - please check if argument format is "number" or "number:number" or "number:number:number"'
+        'timeToSeconds: too many semicolons - please check if argument format is "number" or "number:number" or "number:number:number"'
       );
   }
 };
