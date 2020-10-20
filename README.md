@@ -50,4 +50,4 @@ convert("2:2:2:2");
 
 ## License
 
-MIT @ [Mateusz Zaremba](https://matzar.github.io/)
+MIT
