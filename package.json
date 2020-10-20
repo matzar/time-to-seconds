@@ -1,6 +1,6 @@
 {
   "name": "time-to-seconds",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Non-strict format, time to seconds converter ",
   "main": "index.js",
   "scripts": {
