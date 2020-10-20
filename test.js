@@ -10,7 +10,7 @@ describe("timeToSeconds", () => {
     expect(function () {
       timeToSeconds("asd");
     }).to.throw(
-      'timeToSeconds: invalid function argument - please check if argument format is "number" or "number:number" or "number:number:number"'
+      'time-to-seconds: invalid function argument - please check if argument format is "number" or "number:number" or "number:number:number"'
     );
   });
 
@@ -18,7 +18,7 @@ describe("timeToSeconds", () => {
     expect(function () {
       timeToSeconds("a:s:d");
     }).to.throw(
-      'timeToSeconds: invalid function argument - please check if argument format is "number" or "number:number" or "number:number:number"'
+      'time-to-seconds: invalid function argument - please check if argument format is "number" or "number:number" or "number:number:number"'
     );
   });
 
@@ -26,7 +26,7 @@ describe("timeToSeconds", () => {
     expect(function () {
       timeToSeconds("2:s:d");
     }).to.throw(
-      'timeToSeconds: invalid function argument - please check if argument format is "number" or "number:number" or "number:number:number"'
+      'time-to-seconds: invalid function argument - please check if argument format is "number" or "number:number" or "number:number:number"'
     );
   });
 
@@ -34,7 +34,7 @@ describe("timeToSeconds", () => {
     expect(function () {
       timeToSeconds("!@#$!@#$%#^&$*%$%#&$^@#!%@");
     }).to.throw(
-      'timeToSeconds: invalid function argument - please check if argument format is "number" or "number:number" or "number:number:number"'
+      'time-to-seconds: invalid function argument - please check if argument format is "number" or "number:number" or "number:number:number"'
     );
   });
 
@@ -42,7 +42,7 @@ describe("timeToSeconds", () => {
     expect(function () {
       timeToSeconds("2:#$%:d");
     }).to.throw(
-      'timeToSeconds: invalid function argument - please check if argument format is "number" or "number:number" or "number:number:number"'
+      'time-to-seconds: invalid function argument - please check if argument format is "number" or "number:number" or "number:number:number"'
     );
   });
 
@@ -50,7 +50,7 @@ describe("timeToSeconds", () => {
     expect(function () {
       timeToSeconds("123a");
     }).to.throw(
-      'timeToSeconds: invalid function argument - please check if argument format is "number" or "number:number" or "number:number:number"'
+      'time-to-seconds: invalid function argument - please check if argument format is "number" or "number:number" or "number:number:number"'
     );
   });
 
@@ -58,7 +58,7 @@ describe("timeToSeconds", () => {
     expect(function () {
       timeToSeconds("1:2:2:4");
     }).to.throw(
-      'timeToSeconds: too many semicolons - please check if argument format is "number" or "number:number" or "number:number:number"'
+      'time-to-seconds: too many semicolons - please check if argument format is "number" or "number:number" or "number:number:number"'
     );
   });
 
