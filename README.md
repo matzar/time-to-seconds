@@ -92,6 +92,16 @@ The non-strict format will allow for an input of an empty string which will be t
 - `timeToSeconds("")` or
 - `timeToSeconds("0")`
 
+## Math
+
+You could calculate the value to convert and because of the non-strict format, pass the calcualted value to the function, e.g.:
+
+```js
+var num = Math.log10(100);
+const seconds = timeToSeconds(`${num.toString()}:`);
+// => 120
+```
+
 ## License
 
 MIT
