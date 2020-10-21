@@ -13,7 +13,15 @@ $ npm install time-to-seconds
 
 ## Usage
 
-Pass time as a string in format `"h:m:s"` where `h`, `m` and `s` are any numbers and get seconds as a number in return.
+Pass time as a string in formats:
+
+- `"h:m:s"`
+- `"m:s"`
+- `":s"`
+- `"s"`
+- or a variation of `"h:m:s"`, e.g. `":m:s"` - as long as you put numbers between 0 to 2 semicolons,
+
+where `h`, `m` and `s` are any numbers, you will get seconds as a number in return.
 
 ```js
 var convert = require("time-to-seconds");
