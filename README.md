@@ -2,26 +2,23 @@
 
 Non-strict format, time to seconds converter.
 
-As long as you keep the number of semicolons in the string between 0 and 2 (`0 <= # of semicolons <= 2`) and put numbers in-between,
-you will get the correct conversion.
-
 ## Install
 
 ```
-$ npm install time-to-seconds
+$ npm i time-to-seconds
 ```
 
 ## Usage
 
-Pass time as a string in formats:
+Pass the time as a string in formats:
 
 - `"h:m:s"`
 - `"m:s"`
 - `":s"`
 - `"s"`
-- or a variation of `"h:m:s"`, e.g. `":m:s"` - as long as you put numbers between 0 to 2 semicolons,
+- or a variation of `"h:m:s"`, e.g. `":m:s"` - as long as you keep the number of semicolons between 0 and 2,
 
-where `h`, `m` and `s` are any numbers, you will get seconds as a number in return.
+where `h`, `m` or `s` are any numbers, you will get seconds as a number in return.
 
 ```js
 var convert = require("time-to-seconds");
@@ -65,9 +62,13 @@ convert("2:2:2:2");
 
 ## Decimal numbers
 
-If you pass decimals to the function, e.g.: `timeToSeconds("0.2:00")` it will be interpreted as 0.2 of one minute, so 12 seconds (`60 * 0.2 = 12 seconds`).
-Similarly, if you pass, e.g.: `timeToSeconds("0.2:00:00")` it will be interpreted as 0.2 of one hour, so 720 seconds (`3600 * 0.2 = 720 seconds`).
-Together, `timeToSeconds("0.2:0.2:00")` it would return 732 seconds (`0.2` of one hour is `720 seconds`, `0.2` of one minute is `12 seconds`; `720 + 12 = 732 seconds`)
+If you pass decimals to the function, e.g.: `timeToSeconds("0.2:00")` or `timeToSeconds("0.2:")` (both inputs will return the same number), it will be interpreted as 0.2 of one minute, so 12 seconds (`60 * 0.2 = 12 seconds`).
+
+Similarly, if you pass, e.g.: `timeToSeconds("0.2:00:00")` or `timeToSeconds("0.2::")` (again, both inputs will return the same number), it will be interpreted as 0.2 of one hour, so 720 seconds (`3600 * 0.2 = 720 seconds`).
+
+Together, `timeToSeconds("0.2:0.2:00")` or `timeToSeconds("0.2:0.2:")`, will return 732 seconds (`0.2` of one hour is `720 seconds`, `0.2` of one minute is `12 seconds`; `720 + 12 = 732 seconds`)
+
+Note: passing decimals as seconds, e.g.: `timeToSeconds("0:0:0.2")`, will simply return `0.2 seconds`. 
 
 ## License
 
