@@ -197,4 +197,10 @@ describe("timeToSeconds", () => {
     const seconds = timeToSeconds("0.2");
     expect(seconds).to.be.equal(0.2);
   });
+
+  it("Should return 120", () => {
+    var num = Math.log10(100);
+    const seconds = timeToSeconds(`${num.toString()}:`);
+    expect(seconds).to.be.equal(120);
+  });
 });
