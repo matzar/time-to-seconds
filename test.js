@@ -203,4 +203,9 @@ describe("timeToSeconds", () => {
     const seconds = timeToSeconds(`${num.toString()}:`);
     expect(seconds).to.be.equal(120);
   });
+
+  it("Should return 120", () => {
+    const seconds = timeToSeconds(`${Math.log10(100).toString()}:`);
+    expect(seconds).to.be.equal(120);
+  });
 });

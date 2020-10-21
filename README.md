@@ -21,42 +21,42 @@ Pass the time as a string in formats:
 where `h`, `m` or `s` are any numbers, you will get seconds as a number in return.
 
 ```js
-var convert = require("time-to-seconds");
+var timeToSeconds = require("time-to-seconds");
 
-convert("2:2:2");
+timeToSeconds("2:2:2");
 // => 7322
 
-convert("02:02:02");
+timeToSeconds("02:02:02");
 // => 7322
 
-convert("2:02:02");
+timeToSeconds("2:02:02");
 // => 7322
 
-convert("2:2:02");
+timeToSeconds("2:2:02");
 // => 7322
 
-convert("2:2:2");
+timeToSeconds("2:2:2");
 // => 7322
 
-convert(":2");
+timeToSeconds(":2");
 // => 2
 
-convert("2:");
+timeToSeconds("2:");
 // => 120
 
-convert("2");
+timeToSeconds("2");
 // => 2
 
-convert("");
+timeToSeconds("");
 // => 0
 
-convert("0");
+timeToSeconds("0");
 // => 0
 
-convert("Anything else than a number");
+timeToSeconds("Anything else than a number");
 // => throws TypeError - 'time-to-seconds: invalid function argument - please check if argument format is "number" or "number:number" or "number:number:number"'
 
-convert("2:2:2:2");
+timeToSeconds("2:2:2:2");
 // => throws TypeError - 'time-to-seconds: too many semicolons - please check if argument format is "number" or "number:number" or "number:number:number"'
 ```
 
@@ -98,7 +98,10 @@ You could calculate the value to convert and because of the non-strict format, p
 
 ```js
 var num = Math.log10(100);
-const seconds = timeToSeconds(`${num.toString()}:`);
+timeToSeconds(`${num.toString()}:`);
+// => 120
+
+timeToSeconds(`${Math.log10(100).toString()}:`);
 // => 120
 ```
 
