@@ -141,4 +141,60 @@ describe("timeToSeconds", () => {
     const seconds = timeToSeconds("0");
     expect(seconds).to.be.equal(0);
   });
+
+  // Decimals
+  it("Should return 0", () => {
+    const seconds = timeToSeconds("0.2:00");
+    expect(seconds).to.be.equal(12);
+  });
+
+  it("Should return 0", () => {
+    const seconds = timeToSeconds("0.2:");
+    expect(seconds).to.be.equal(12);
+  });
+
+  it("Should return 0", () => {
+    const seconds = timeToSeconds("0.2:00:00");
+    expect(seconds).to.be.equal(720);
+  });
+
+  it("Should return 0", () => {
+    const seconds = timeToSeconds("0.2::");
+    expect(seconds).to.be.equal(720);
+  });
+
+  it("Should return 0", () => {
+    const seconds = timeToSeconds("0.2:0.2:00");
+    expect(seconds).to.be.equal(732);
+  });
+
+  it("Should return 0", () => {
+    const seconds = timeToSeconds("0.2:0.2:");
+    expect(seconds).to.be.equal(732);
+  });
+
+  it("Should return 0", () => {
+    const seconds = timeToSeconds("0:0:0.2");
+    expect(seconds).to.be.equal(0.2);
+  });
+
+  it("Should return 0", () => {
+    const seconds = timeToSeconds("0::0.2");
+    expect(seconds).to.be.equal(0.2);
+  });
+
+  it("Should return 0", () => {
+    const seconds = timeToSeconds(":0:0.2");
+    expect(seconds).to.be.equal(0.2);
+  });
+
+  it("Should return 0", () => {
+    const seconds = timeToSeconds("::0.2");
+    expect(seconds).to.be.equal(0.2);
+  });
+
+  it("Should return 0", () => {
+    const seconds = timeToSeconds("0.2");
+    expect(seconds).to.be.equal(0.2);
+  });
 });
