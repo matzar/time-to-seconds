@@ -75,7 +75,11 @@ Similarly, if you pass, e.g.:
 
 (again, the inputs are the same) it will be interpreted as 0.2 of one hour, so 720 seconds (`3600 * 0.2 = 720 seconds`).
 
-Together, `timeToSeconds("0.2:0.2:00")` or `timeToSeconds("0.2:0.2:")`, will return 732 seconds (`0.2` of one hour is `720 seconds`, `0.2` of one minute is `12 seconds`; `720 + 12 = 732 seconds`)
+Together:
+- `timeToSeconds("0.2:0.2:00")` or 
+- `timeToSeconds("0.2:0.2:")`
+
+will return 732 seconds (`0.2` of one hour is `720 seconds`, `0.2` of one minute is `12 seconds`; `720 + 12 = 732 seconds`)
 
 Note: passing decimals as seconds, e.g.: `timeToSeconds("0:0:0.2")`, will simply return `0.2 seconds`. 
 
