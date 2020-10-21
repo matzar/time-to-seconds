@@ -143,57 +143,57 @@ describe("timeToSeconds", () => {
   });
 
   // Decimals
-  it("Should return 0", () => {
+  it("Should return 12", () => {
     const seconds = timeToSeconds("0.2:00");
     expect(seconds).to.be.equal(12);
   });
 
-  it("Should return 0", () => {
+  it("Should return 12", () => {
     const seconds = timeToSeconds("0.2:");
     expect(seconds).to.be.equal(12);
   });
 
-  it("Should return 0", () => {
+  it("Should return 720", () => {
     const seconds = timeToSeconds("0.2:00:00");
     expect(seconds).to.be.equal(720);
   });
 
-  it("Should return 0", () => {
+  it("Should return 720", () => {
     const seconds = timeToSeconds("0.2::");
     expect(seconds).to.be.equal(720);
   });
 
-  it("Should return 0", () => {
+  it("Should return 732", () => {
     const seconds = timeToSeconds("0.2:0.2:00");
     expect(seconds).to.be.equal(732);
   });
 
-  it("Should return 0", () => {
+  it("Should return 732", () => {
     const seconds = timeToSeconds("0.2:0.2:");
     expect(seconds).to.be.equal(732);
   });
 
-  it("Should return 0", () => {
+  it("Should return 0.2", () => {
     const seconds = timeToSeconds("0:0:0.2");
     expect(seconds).to.be.equal(0.2);
   });
 
-  it("Should return 0", () => {
+  it("Should return 0.2", () => {
     const seconds = timeToSeconds("0::0.2");
     expect(seconds).to.be.equal(0.2);
   });
 
-  it("Should return 0", () => {
+  it("Should return 0.2", () => {
     const seconds = timeToSeconds(":0:0.2");
     expect(seconds).to.be.equal(0.2);
   });
 
-  it("Should return 0", () => {
+  it("Should return 0.2", () => {
     const seconds = timeToSeconds("::0.2");
     expect(seconds).to.be.equal(0.2);
   });
 
-  it("Should return 0", () => {
+  it("Should return 0.2", () => {
     const seconds = timeToSeconds("0.2");
     expect(seconds).to.be.equal(0.2);
   });
