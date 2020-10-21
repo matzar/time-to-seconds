@@ -83,6 +83,13 @@ will return 732 seconds (`0.2` of one hour is `720 seconds`, `0.2` of one minute
 
 Note: passing decimals as seconds, e.g.: `timeToSeconds("0:0:0.2")`, will simply return `0.2 seconds`. 
 
+## Empty strings
+
+As a non-strict, time-to-seconds converter, it's allowed to pass an empty string which will be treated as passing a number `0`; these two inputs are equivalent and will return `0 seconds`:
+
+- `timeToSeconds("")` or 
+- `timeToSeconds("0")`
+
 ## License
 
 MIT
