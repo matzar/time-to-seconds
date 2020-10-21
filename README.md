@@ -65,29 +65,31 @@ convert("2:2:2:2");
 If you pass decimals to the function, e.g.:
 
 - `timeToSeconds("0.2:00")` or
-- `timeToSeconds("0.2:")` 
+- `timeToSeconds("0.2:")`
 
 (in the above examples the inputs are the same) it will be interpreted as 0.2 of one minute, so 12 seconds (`60 * 0.2 = 12 seconds`).
 
-Similarly, if you pass, e.g.: 
-- `timeToSeconds("0.2:00:00")` or 
-- `timeToSeconds("0.2::")` 
+Similarly, if you pass, e.g.:
+
+- `timeToSeconds("0.2:00:00")` or
+- `timeToSeconds("0.2::")`
 
 (again, the inputs are the same) it will be interpreted as 0.2 of one hour, so 720 seconds (`3600 * 0.2 = 720 seconds`).
 
 Together:
-- `timeToSeconds("0.2:0.2:00")` or 
+
+- `timeToSeconds("0.2:0.2:00")` or
 - `timeToSeconds("0.2:0.2:")`
 
 will return 732 seconds (`0.2` of one hour is `720 seconds`, `0.2` of one minute is `12 seconds`; `720 + 12 = 732 seconds`)
 
-Note: passing decimals as seconds, e.g.: `timeToSeconds("0:0:0.2")`, will simply return `0.2 seconds`. 
+Note: passing decimals as seconds, e.g.: `timeToSeconds("0:0:0.2")`, will simply return `0.2 seconds`.
 
 ## Empty strings
 
-As a non-strict, time-to-seconds converter, it's allowed to pass an empty string which will be treated as passing a number `0`; these two inputs are equivalent and will return `0 seconds`:
+A non-strict, time-to-seconds converter will allow for an input of an empty string which will be treated the same as passing a number `0`; these two inputs are equivalent and will return `0 seconds`:
 
-- `timeToSeconds("")` or 
+- `timeToSeconds("")` or
 - `timeToSeconds("0")`
 
 ## License
