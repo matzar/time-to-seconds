@@ -7,8 +7,10 @@ Non-strict format, time to seconds converter.
 - [Installation](#installation)
 - [Usage](#usage)
 - [Examples](#examples)
-- [Decimal numbers](#decimal-numbers)
-- [Empty strings](#empty-strings)
+- [Empty Strings](#empty-strings)
+- [Error Handling](#error-handling)
+- [Decimal Numbers](#decimal-numbers)
+- [Empty Strings](#empty-strings)
 - [Math](#math)
 - [License](#license)
 
@@ -64,7 +66,18 @@ timeToSeconds("");
 
 timeToSeconds("0");
 // => 0
+```
 
+## Empty Strings
+
+The non-strict format will allow for the input of an empty string which will be treated the same as passing a number `0`; these two inputs are equivalent and will return `0 seconds`:
+
+- `timeToSeconds("")` or
+- `timeToSeconds("0")`
+
+## Error Handling
+
+```js
 timeToSeconds("Anything else than time string");
 // => throws TypeError - 'time-to-seconds: invalid function argument - please check if argument format is time string; see README for more information on time string formatting.'
 
@@ -72,7 +85,7 @@ timeToSeconds("2:2:2:2");
 // => throws TypeError - 'time-to-seconds: too many semicolons - please check if argument format is time string; see README for more information on time string formatting.'
 ```
 
-## Decimal numbers
+## Decimal Numbers
 
 If you pass decimals to the function, e.g.:
 
@@ -96,13 +109,6 @@ Together:
 will return 732 seconds (`0.2` of one hour is `720 seconds`, `0.2` of one minute is `12 seconds`; `720 + 12 = 732 seconds`)
 
 Note: passing decimals as seconds, e.g.: `timeToSeconds("0:0:0.2")`, will simply return `0.2 seconds`.
-
-## Empty strings
-
-The non-strict format will allow for the input of an empty string which will be treated the same as passing a number `0`; these two inputs are equivalent and will return `0 seconds`:
-
-- `timeToSeconds("")` or
-- `timeToSeconds("0")`
 
 ## Math
 
