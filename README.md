@@ -2,7 +2,7 @@
 
 Non-strict format, time to seconds converter.
 
-## Doucumentation
+## Documentation
 
 - [Installation](#installation)
 - [Usage](#usage)
