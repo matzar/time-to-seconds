@@ -54,10 +54,10 @@ timeToSeconds("0");
 // => 0
 
 timeToSeconds("Anything else than time string");
-// => throws TypeError - 'time-to-seconds: invalid function argument - please check if argument format is "number" or "number:number" or "number:number:number"'
+// => throws TypeError - 'time-to-seconds: invalid function argument - please check if argument format is time string; see README for more information on time string formatting.'
 
 timeToSeconds("2:2:2:2");
-// => throws TypeError - 'time-to-seconds: too many semicolons - please check if argument format is "number" or "number:number" or "number:number:number"'
+// => throws TypeError - 'time-to-seconds: too many semicolons - please check if argument format is time string; see README for more information on time string formatting.'
 ```
 
 ## Decimal numbers
