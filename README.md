@@ -53,7 +53,7 @@ timeToSeconds("");
 timeToSeconds("0");
 // => 0
 
-timeToSeconds("Anything else than a number");
+timeToSeconds("Anything else than time string");
 // => throws TypeError - 'time-to-seconds: invalid function argument - please check if argument format is "number" or "number:number" or "number:number:number"'
 
 timeToSeconds("2:2:2:2");
