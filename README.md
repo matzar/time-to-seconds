@@ -1,8 +1,17 @@
-## time-to-seconds ![Build Status](https://travis-ci.com/matzar/time-to-seconds.svg?branch=master)
+# time-to-seconds [![Build Status](https://travis-ci.com/matzar/time-to-seconds.svg?branch=master)](https://travis-ci.com/github/matzar/time-to-seconds) [![NPM Version](https://img.shields.io/npm/v/time-to-seconds)](https://www.npmjs.com/package/time-to-seconds) [![NPM Downloads](https://img.shields.io/npm/dw/time-to-seconds)](https://www.npmjs.com/package/time-to-seconds?minimal=true) [![install size](https://packagephobia.com/badge?p=time-to-seconds)](https://packagephobia.com/result?p=time-to-seconds) [![NPM](https://img.shields.io/npm/l/time-to-seconds)](https://github.com/matzar/time-to-seconds/blob/master/LICENSE)
 
 Non-strict format, time to seconds converter.
 
-## Install
+## Doucumentation
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Decimal numbers](#decimal-numbers)
+- [Empty strings](#empty-strings)
+- [Math](#math)
+- [License](#license)
+
+## Installation
 
 ```
 $ npm i time-to-seconds
