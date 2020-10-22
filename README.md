@@ -6,6 +6,7 @@ Non-strict format, time to seconds converter.
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [Examples](#examples)
 - [Decimal numbers](#decimal-numbers)
 - [Empty strings](#empty-strings)
 - [Math](#math)
@@ -28,6 +29,8 @@ Pass the time as a string in formats:
 - or a variation of `"h:m:s"`, e.g. `":m:s"` - as long as you keep the number of semicolons between 0 and 2,
 
 where `h`, `m` or `s` are any numbers, you will get seconds as a number in return.
+
+## Examples
 
 ```js
 var timeToSeconds = require("time-to-seconds");
