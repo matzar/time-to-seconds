@@ -10,6 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/matzar/time-to-seconds.git"
   },
+  "engines": {
+    "node": ">=15.0.1",
+    "vscode": "^1.22.0"
+  },
   "keywords": [
     "time",
     "converter",
