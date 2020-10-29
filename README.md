@@ -1,6 +1,23 @@
-# time-to-seconds [![Build Status](https://travis-ci.com/matzar/time-to-seconds.svg?branch=master)](https://travis-ci.com/github/matzar/time-to-seconds) [![NPM Version](https://img.shields.io/npm/v/time-to-seconds)](https://www.npmjs.com/package/time-to-seconds) [![NPM Downloads](https://img.shields.io/npm/dw/time-to-seconds)](https://www.npmjs.com/package/time-to-seconds?minimal=true) [![install size](https://packagephobia.com/badge?p=time-to-seconds)](https://packagephobia.com/result?p=time-to-seconds)
+# time-to-seconds 
+
+[![Build Status](https://travis-ci.com/matzar/time-to-seconds.svg?branch=master)](https://travis-ci.com/github/matzar/time-to-seconds) 
+[![NPM Version](https://img.shields.io/npm/v/time-to-seconds)](https://www.npmjs.com/package/time-to-seconds) 
+[![NPM Downloads](https://img.shields.io/npm/dt/time-to-seconds)](https://www.npmjs.com/package/time-to-seconds?minimal=true)
+[![NPM Downloads](https://img.shields.io/npm/dw/time-to-seconds)](https://www.npmjs.com/package/time-to-seconds?minimal=true) 
+[![install size](https://packagephobia.com/badge?p=time-to-seconds)](https://packagephobia.com/result?p=time-to-seconds)
 
 Non-strict format, time to seconds converter.
+
+```js
+timeToSeconds("2:2:2"); timeToSeconds("2:02:02"); timeToSeconds("02:02:02");
+// => 7322
+
+timeToSeconds("2:"); timeToSeconds("2:0"); timeToSeconds("02:00");
+// => 120
+
+timeToSeconds(":2"); timeToSeconds("2"); timeToSeconds("00:02");
+// => 2
+```
 
 ## Documentation
 
@@ -45,9 +62,6 @@ timeToSeconds("2:02:02");
 // => 7322
 
 timeToSeconds("2:2:02");
-// => 7322
-
-timeToSeconds("2:2:2");
 // => 7322
 
 timeToSeconds(":2");
