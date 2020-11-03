@@ -8,29 +8,6 @@
 
 Non-strict format, time to seconds converter.
 
-```js
-timeToSeconds("2:2:2"); timeToSeconds("2:02:02"); timeToSeconds("02:02:02");
-// => 7322
-
-timeToSeconds("2:"); timeToSeconds("2:0"); timeToSeconds("02:00");
-// => 120
-
-timeToSeconds(":2"); timeToSeconds("2"); timeToSeconds("00:02");
-// => 2
-```
-
-## Documentation
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Examples](#examples)
-- [Empty Strings](#empty-strings)
-- [Error Handling](#error-handling)
-- [Decimal Numbers](#decimal-numbers)
-- [Empty Strings](#empty-strings)
-- [Math](#math)
-- [License](#license)
-
 ## Installation
 
 ```
@@ -64,13 +41,31 @@ timeToSeconds("2:02:02");
 timeToSeconds("2:2:02");
 // => 7322
 
-timeToSeconds(":2");
-// => 2
-
 timeToSeconds("2:");
 // => 120
 
+timeToSeconds("2:0");
+// => 120
+
+timeToSeconds("02:0");
+// => 120
+
+timeToSeconds("02:00");
+// => 120
+
+timeToSeconds(":2");
+// => 2
+
 timeToSeconds("2");
+// => 2
+
+timeToSeconds("0:2");
+// => 2
+
+timeToSeconds("0:02");
+// => 2
+
+timeToSeconds("00:02");
 // => 2
 
 timeToSeconds("");
@@ -138,3 +133,15 @@ timeToSeconds(`${Math.log10(100).toString()}:`);
 ## License
 
 MIT
+
+## Documentation
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Examples](#examples)
+- [Empty Strings](#empty-strings)
+- [Error Handling](#error-handling)
+- [Decimal Numbers](#decimal-numbers)
+- [Empty Strings](#empty-strings)
+- [Math](#math)
+- [License](#license)
