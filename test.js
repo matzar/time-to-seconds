@@ -102,6 +102,16 @@ describe("timeToSeconds", () => {
     expect(seconds).to.be.equal(120);
   });
 
+  it("Should return 120", () => {
+    const seconds = timeToSeconds("02:0");
+    expect(seconds).to.be.equal(120);
+  });
+
+  it("Should return 120", () => {
+    const seconds = timeToSeconds("02:00");
+    expect(seconds).to.be.equal(120);
+  });
+
   it("Should return 2", () => {
     const seconds = timeToSeconds("2");
     expect(seconds).to.be.equal(2);
@@ -124,6 +134,11 @@ describe("timeToSeconds", () => {
 
   it("Should return 2", () => {
     const seconds = timeToSeconds("00:02");
+    expect(seconds).to.be.equal(2);
+  });
+
+  it("Should return 2", () => {
+    const seconds = timeToSeconds("0:02");
     expect(seconds).to.be.equal(2);
   });
 
