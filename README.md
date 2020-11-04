@@ -22,7 +22,7 @@ Pass time in a string format as:
 - `"m:s"`
 - `":s"`
 - `"s"`
-- or any variation of `"h:m:s"`, e.g. `":m:s"` - as long as you keep the number of semicolons between 0 and 2, where `h`, `m` or `s` are any numbers, you will get seconds as a number in return.
+- or any variation of `"h:m:s"`, e.g. `":m:s"`; as long as you keep the number of semicolons between 0 and 2, where `h`, `m` or `s` are any numbers, you will get seconds - as a number - in return.
 
 ## Examples
 
