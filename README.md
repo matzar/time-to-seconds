@@ -1,9 +1,9 @@
-# time-to-seconds 
+# time-to-seconds
 
-[![Build Status](https://travis-ci.com/matzar/time-to-seconds.svg?branch=master)](https://travis-ci.com/github/matzar/time-to-seconds) 
-[![NPM Version](https://img.shields.io/npm/v/time-to-seconds)](https://www.npmjs.com/package/time-to-seconds) 
+[![Build Status](https://travis-ci.com/matzar/time-to-seconds.svg?branch=master)](https://travis-ci.com/github/matzar/time-to-seconds)
+[![NPM Version](https://img.shields.io/npm/v/time-to-seconds)](https://www.npmjs.com/package/time-to-seconds)
 [![NPM Downloads](https://img.shields.io/npm/dt/time-to-seconds)](https://www.npmjs.com/package/time-to-seconds?minimal=true)
-[![NPM Downloads](https://img.shields.io/npm/dw/time-to-seconds)](https://www.npmjs.com/package/time-to-seconds?minimal=true) 
+[![NPM Downloads](https://img.shields.io/npm/dw/time-to-seconds)](https://www.npmjs.com/package/time-to-seconds?minimal=true)
 [![install size](https://packagephobia.com/badge?p=time-to-seconds)](https://packagephobia.com/result?p=time-to-seconds)
 
 Non-strict format, time to seconds converter.
@@ -16,13 +16,13 @@ $ npm i time-to-seconds
 
 ## Usage
 
-Pass the time as a string in formats:
+Pass time in a string format as:
 
 - `"h:m:s"`
 - `"m:s"`
 - `":s"`
 - `"s"`
-- or a variation of `"h:m:s"`, e.g. `":m:s"` - as long as you keep the number of semicolons between 0 and 2, where `h`, `m` or `s` are any numbers, you will get seconds as a number in return.
+- or any variation of `"h:m:s"`, e.g. `":m:s"` - as long as you keep the number of semicolons between 0 and 2, where `h`, `m` or `s` are any numbers, you will get seconds as a number in return.
 
 ## Examples
 
