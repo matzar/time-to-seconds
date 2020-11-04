@@ -16,7 +16,7 @@ $ npm i time-to-seconds
 
 ## Usage
 
-Pass time in a string format as:
+Pass time in a string format as, e.g.:
 
 - `"h:m:s"`
 - `"m:s"`
