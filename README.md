@@ -77,7 +77,7 @@ timeToSeconds("0");
 
 ## Empty Strings
 
-The non-strict format will allow for the input of an empty string which will be treated the same as passing a number `0`; these two inputs are equivalent and will return `0 seconds`:
+The non-strict format will allow for the input of an empty string which will be treated the same as passing the number `0`; these two inputs are equivalent and will return `0 seconds`:
 
 - `timeToSeconds("")` or
 - `timeToSeconds("0")`
