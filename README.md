@@ -23,7 +23,7 @@ Pass time in a string format as, e.g.:
 - `"m:s"`
 - `":s"`
 - `"s"`
-- or any variation of `"h:m:s"`, e.g. `":m:s"`; as long as you keep the number of semicolons between 0 and 2, where `h`, `m` or `s` are any numbers, you will get seconds - as a number - in return.
+- or any variation of `"h:m:s"`, e.g. `":m:s"`; as long as you keep the number of colons between 0 and 2, where `h`, `m` or `s` are any numbers, you will get seconds - as a number - in return.
 
 ## Examples
 
@@ -90,7 +90,7 @@ timeToSeconds("Anything else than time string");
 // => throws TypeError - 'time-to-seconds: invalid function argument - please check if argument format is time string; see README for more information on time string formatting.'
 
 timeToSeconds("2:2:2:2");
-// => throws TypeError - 'time-to-seconds: too many semicolons - please check if argument format is time string; see README for more information on time string formatting.'
+// => throws TypeError - 'time-to-seconds: too many colons - please check if argument format is time string; see README for more information on time string formatting.'
 ```
 
 ## Decimal Numbers

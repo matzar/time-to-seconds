@@ -54,11 +54,11 @@ describe("timeToSeconds", () => {
     );
   });
 
-  it("should return error - wrong argument - too many semicolons", () => {
+  it("should return error - wrong argument - too many colons", () => {
     expect(function () {
       timeToSeconds("1:2:2:4");
     }).to.throw(
-      "time-to-seconds: too many semicolons - please check if argument format is time string; see README for more information on time string formatting."
+      "time-to-seconds: too many colons - please check if argument format is time string; see README for more information on time string formatting."
     );
   });
 

@@ -17,7 +17,7 @@ module.exports = function (seconds) {
       return +timeArray[0];
     default:
       throw new TypeError(
-        "time-to-seconds: too many semicolons - please check if argument format is time string; see README for more information on time string formatting."
+        "time-to-seconds: too many colons - please check if argument format is time string; see README for more information on time string formatting."
       );
   }
 };
