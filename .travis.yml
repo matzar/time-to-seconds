@@ -3,7 +3,8 @@ dist: xenial
 language: node_js
 node_js:
   - lts/*
+before_install:
+  - npm install -g codecov
 script:
-  - npm install codecov -g
-after_success:
+  - nyc --reporter=lcov mocha && codecov
   - codecov

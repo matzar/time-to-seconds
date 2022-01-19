@@ -5,6 +5,7 @@
 [![NPM Downloads](https://img.shields.io/npm/dt/time-to-seconds)](https://www.npmjs.com/package/time-to-seconds?minimal=true)
 [![NPM Downloads](https://img.shields.io/npm/dw/time-to-seconds)](https://www.npmjs.com/package/time-to-seconds?minimal=true)
 [![install size](https://packagephobia.com/badge?p=time-to-seconds)](https://packagephobia.com/result?p=time-to-seconds)
+[![codecov](https://codecov.io/gh/matzar/time-to-seconds/branch/master/graph/badge.svg?token=EUYZLw2SLo)](https://codecov.io/gh/matzar/time-to-seconds)
 
 Non-strict format, time to seconds converter.
 
@@ -136,12 +137,13 @@ MIT
 
 ## Documentation
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Examples](#examples)
-- [Empty Strings](#empty-strings)
-- [Error Handling](#error-handling)
-- [Decimal Numbers](#decimal-numbers)
-- [Empty Strings](#empty-strings)
-- [Math](#math)
-- [License](#license)
+- [time-to-seconds](#time-to-seconds)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Examples](#examples)
+  - [Empty Strings](#empty-strings)
+  - [Error Handling](#error-handling)
+  - [Decimal Numbers](#decimal-numbers)
+  - [Math](#math)
+  - [License](#license)
+  - [Documentation](#documentation)
