@@ -25,6 +25,11 @@
     "seconds",
     "timestamp"
   ],
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js"
+  ],
   "author": "Mateusz Zaremba",
   "license": "MIT",
   "bugs": {
