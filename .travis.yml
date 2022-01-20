@@ -7,4 +7,3 @@ before_install:
   - npm install -g codecov
 script:
   - nyc --reporter=lcov mocha && codecov
-  - codecov
