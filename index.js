@@ -5,7 +5,7 @@ module.exports = function (seconds) {
 
   if (timeArray.some(isNaN))
     throw new TypeError(
-      "time-to-seconds: invalid function argument - please check if argument format is time string; see README for more information on time string formatting."
+      'time-to-seconds: wrong argument type - something else than a number string in format "number", "number:number" or "number:number:number" was passed. See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
     );
 
   switch (timeArray.length) {
@@ -17,7 +17,7 @@ module.exports = function (seconds) {
       return +timeArray[0];
     default:
       throw new TypeError(
-        "time-to-seconds: too many colons - please check if argument format is time string; see README for more information on time string formatting."
+        'time-to-seconds: too many colons - make sure the function argument is a number string in format "number", "number:number" or "number:number:number". See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
       );
   }
 };
