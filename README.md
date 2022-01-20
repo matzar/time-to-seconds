@@ -78,19 +78,23 @@ timeToSeconds("0");
 
 ## Empty Strings
 
-The non-strict format will allow for the input of an empty string which will be treated the same as passing the number `0`; these two inputs are equivalent and will return `0 seconds`:
+The non-strict format will allow for the input of an empty string which will be treated the same as passing the number `0`; the below inputs are equivalent and will return `0` seconds:
 
-- `timeToSeconds("")` or
+- `timeToSeconds("")`
 - `timeToSeconds("0")`
+- `timeToSeconds(":0")`
+- `timeToSeconds("::0")`
+- `timeToSeconds(":")`
+- `timeToSeconds("::")`
 
 ## Error Handling
 
 ```js
 timeToSeconds("Anything else than time string");
-// => throws TypeError - 'time-to-seconds: invalid function argument - please check if argument format is time string; see README for more information on time string formatting.'
+// TypeError: 'time-to-seconds: wrong argument type - something else than a number string in format "number", "number:number" or "number:number:number" was passed. See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
 
 timeToSeconds("2:2:2:2");
-// => throws TypeError - 'time-to-seconds: too many colons - please check if argument format is time string; see README for more information on time string formatting.'
+// TypeError: 'time-to-seconds: too many colons - make sure the function argument is a number string in format "number", "number:number" or "number:number:number". See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
 ```
 
 ## Decimal Numbers
