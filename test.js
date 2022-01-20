@@ -6,59 +6,83 @@ var expect = chai.expect;
 var timeToSeconds = require("./");
 
 describe("timeToSeconds", () => {
-  it('should return error - wrong argument - something else than a number string, in format "number" or "number:number" or "number:number:number", was passed', () => {
+  it('should return error - wrong argument type - something else than a number string, in format "number" or "number:number" or "number:number:number", was passed', () => {
     expect(function () {
       timeToSeconds("asd");
     }).to.throw(
-      "time-to-seconds: invalid function argument - please check if argument format is time string; see README for more information on time string formatting."
+      'time-to-seconds: wrong argument type - something else than a number string in format "number", "number:number" or "number:number:number" was passed. See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
     );
   });
 
-  it('should return error - wrong argument - something else than a number string, in format "number" or "number:number" or "number:number:number", was passed', () => {
+  it('should return error - wrong argument type - something else than a number string, in format "number" or "number:number" or "number:number:number", was passed', () => {
     expect(function () {
       timeToSeconds("a:s:d");
     }).to.throw(
-      "time-to-seconds: invalid function argument - please check if argument format is time string; see README for more information on time string formatting."
+      'time-to-seconds: wrong argument type - something else than a number string in format "number", "number:number" or "number:number:number" was passed. See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
     );
   });
 
-  it('should return error - wrong argument - something else than a number string, in format "number" or "number:number" or "number:number:number", was passed', () => {
+  it('should return error - wrong argument type - something else than a number string, in format "number" or "number:number" or "number:number:number", was passed', () => {
     expect(function () {
       timeToSeconds("2:s:d");
     }).to.throw(
-      "time-to-seconds: invalid function argument - please check if argument format is time string; see README for more information on time string formatting."
+      'time-to-seconds: wrong argument type - something else than a number string in format "number", "number:number" or "number:number:number" was passed. See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
     );
   });
 
-  it('should return error - wrong argument - something else than a number string, in format "number" or "number:number" or "number:number:number", was passed', () => {
+  it('should return error - wrong argument type - something else than a number string, in format "number" or "number:number" or "number:number:number", was passed', () => {
     expect(function () {
       timeToSeconds("!@#$!@#$%#^&$*%$%#&$^@#!%@");
     }).to.throw(
-      "time-to-seconds: invalid function argument - please check if argument format is time string; see README for more information on time string formatting."
+      'time-to-seconds: wrong argument type - something else than a number string in format "number", "number:number" or "number:number:number" was passed. See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
     );
   });
 
-  it('should return error - wrong argument - something else than a number string, in format "number" or "number:number" or "number:number:number", was passed', () => {
+  it('should return error - wrong argument type - something else than a number string, in format "number" or "number:number" or "number:number:number", was passed', () => {
     expect(function () {
       timeToSeconds("2:#$%:d");
     }).to.throw(
-      "time-to-seconds: invalid function argument - please check if argument format is time string; see README for more information on time string formatting."
+      'time-to-seconds: wrong argument type - something else than a number string in format "number", "number:number" or "number:number:number" was passed. See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
     );
   });
 
-  it('should return error - wrong argument - something else than a number string, in format "number" or "number:number" or "number:number:number", was passed', () => {
+  it('should return error - wrong argument type - something else than a number string, in format "number" or "number:number" or "number:number:number", was passed', () => {
     expect(function () {
       timeToSeconds("123a");
     }).to.throw(
-      "time-to-seconds: invalid function argument - please check if argument format is time string; see README for more information on time string formatting."
+      'time-to-seconds: wrong argument type - something else than a number string in format "number", "number:number" or "number:number:number" was passed. See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
     );
   });
 
-  it("should return error - wrong argument - too many colons", () => {
+  it("should return error - too many colons", () => {
     expect(function () {
       timeToSeconds("1:2:2:4");
     }).to.throw(
-      "time-to-seconds: too many colons - please check if argument format is time string; see README for more information on time string formatting."
+      'time-to-seconds: too many colons - make sure the function argument is a number string in format "number", "number:number" or "number:number:number". See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
+    );
+  });
+
+  it("should return error - too many colons", () => {
+    expect(function () {
+      timeToSeconds("1:2:2:4:5");
+    }).to.throw(
+      'time-to-seconds: too many colons - make sure the function argument is a number string in format "number", "number:number" or "number:number:number". See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
+    );
+  });
+
+  it("should return error - too many colons", () => {
+    expect(function () {
+      timeToSeconds(":::");
+    }).to.throw(
+      'time-to-seconds: too many colons - make sure the function argument is a number string in format "number", "number:number" or "number:number:number". See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
+    );
+  });
+
+  it("should return error - too many colons", () => {
+    expect(function () {
+      timeToSeconds("::::");
+    }).to.throw(
+      'time-to-seconds: too many colons - make sure the function argument is a number string in format "number", "number:number" or "number:number:number". See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
     );
   });
 
@@ -89,6 +113,13 @@ describe("timeToSeconds", () => {
 
   it("Should return 7322", () => {
     const seconds = timeToSeconds("2:02:2");
+    expect(seconds).to.be.equal(7322);
+  });
+
+  it("Should return 7322", () => {
+    const seconds = timeToSeconds(
+      "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002:0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002:0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002"
+    );
     expect(seconds).to.be.equal(7322);
   });
 
@@ -147,13 +178,6 @@ describe("timeToSeconds", () => {
     expect(seconds).to.be.equal(2);
   });
 
-  it("Should return 2", () => {
-    const seconds = timeToSeconds(
-      "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002:0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002:0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002"
-    );
-    expect(seconds).to.be.equal(7322);
-  });
-
   it("Should return 0", () => {
     const seconds = timeToSeconds("");
     expect(seconds).to.be.equal(0);
@@ -161,6 +185,26 @@ describe("timeToSeconds", () => {
 
   it("Should return 0", () => {
     const seconds = timeToSeconds("0");
+    expect(seconds).to.be.equal(0);
+  });
+
+  it("Should return 0", () => {
+    const seconds = timeToSeconds(":0");
+    expect(seconds).to.be.equal(0);
+  });
+
+  it("Should return 0", () => {
+    const seconds = timeToSeconds("::0");
+    expect(seconds).to.be.equal(0);
+  });
+
+  it("Should return 0", () => {
+    const seconds = timeToSeconds(":");
+    expect(seconds).to.be.equal(0);
+  });
+
+  it("Should return 0", () => {
+    const seconds = timeToSeconds("::");
     expect(seconds).to.be.equal(0);
   });
 
