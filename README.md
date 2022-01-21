@@ -8,7 +8,6 @@
 [![NPM Downloads](https://img.shields.io/npm/dw/time-to-seconds)](https://www.npmjs.com/package/time-to-seconds?minimal=true)
 [![install size](https://packagephobia.com/badge?p=time-to-seconds)](https://packagephobia.com/result?p=time-to-seconds)
 [![NPM](https://img.shields.io/npm/l/time-to-seconds)](https://tldrlegal.com/license/mit-license)
-
 ![npms.io (maintenance)](https://img.shields.io/npms-io/maintenance-score/time-to-seconds)
 ![npms.io (quality)](https://img.shields.io/npms-io/quality-score/time-to-seconds)
 ![npms.io (popularity)](https://img.shields.io/npms-io/popularity-score/time-to-seconds)
