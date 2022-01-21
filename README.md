@@ -7,6 +7,7 @@
 [![NPM Downloads](https://img.shields.io/npm/dt/time-to-seconds)](https://www.npmjs.com/package/time-to-seconds?minimal=true)
 [![NPM Downloads](https://img.shields.io/npm/dw/time-to-seconds)](https://www.npmjs.com/package/time-to-seconds?minimal=true)
 [![install size](https://packagephobia.com/badge?p=time-to-seconds)](https://packagephobia.com/result?p=time-to-seconds)
+[![NPM](https://img.shields.io/npm/l/time-to-seconds)](https://tldrlegal.com/license/mit-license)
 
 Non-strict format, time to seconds converter.
 
