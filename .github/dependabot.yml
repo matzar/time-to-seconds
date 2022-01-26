@@ -11,3 +11,6 @@ updates:
       interval: "daily"
     allow:
       - dependency-type: "development"
+    commit-message:
+      prefix-development: "fix:"
+      include: "scope"
