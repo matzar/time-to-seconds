@@ -13,6 +13,7 @@
 ![npms.io (popularity)](https://img.shields.io/npms-io/popularity-score/time-to-seconds)
 ![npms.io (final)](https://img.shields.io/npms-io/final-score/time-to-seconds)
 ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/time-to-seconds)
+[![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
 Non-strict format, time to seconds converter.
 
