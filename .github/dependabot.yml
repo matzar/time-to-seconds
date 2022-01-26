@@ -14,3 +14,6 @@ updates:
     commit-message:
       prefix-development: "fix:"
       include: "scope"
+    labels:
+      - "npm"
+      - "devDependencies"
