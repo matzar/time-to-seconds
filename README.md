@@ -15,7 +15,7 @@
 ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/time-to-seconds)
 [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
-Non-strict format, time to seconds converter.
+Unopinionated time to seconds converter.
 
 ## Installation
 
@@ -25,7 +25,7 @@ $ npm i time-to-seconds
 
 ## Usage
 
-Pass time in a string format as, e.g.:
+Pass time as a string, e.g.:
 
 - `"h:m:s"`
 - `"m:s"`
