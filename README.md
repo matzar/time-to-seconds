@@ -15,6 +15,8 @@
 ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/time-to-seconds)
 [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
+[![Build history](https://buildstats.info/travisci/chart/matzar/time-to-seconds?branch=master)](https://github.com/matzar/time-to-seconds/)
+
 Non-strict format, time to seconds converter.
 
 ## Installation
