@@ -15,9 +15,10 @@
 ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/time-to-seconds)
 [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
+
 [![Build history](https://buildstats.info/travisci/chart/matzar/time-to-seconds?branch=master)](https://github.com/matzar/time-to-seconds/)
 
-Non-strict format, time to seconds converter.
+Unopinionated time to seconds converter that lets you decide the format of your `h:m:s`; as long as you keep the number of colons between `0` and `2` it does not matter if you use `"hh:mm:ss"`, `"h:m:s"` or `"hhh:mmmm:ssss"` format - you will always get the number of seconds back as an integer. 
 
 ## Installation
 
@@ -27,7 +28,7 @@ $ npm i time-to-seconds
 
 ## Usage
 
-Pass time in a string format as, e.g.:
+Pass time as a string, e.g.:
 
 - `"h:m:s"`
 - `"m:s"`
