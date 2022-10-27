@@ -1,7 +1,9 @@
 name: Published
+# trigger when a new tag is created
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - "*"
 
 jobs:
   release:
