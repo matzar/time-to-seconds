@@ -1,0 +1,15 @@
+name: Dry Release
+on:
+  # on create a PR to 'master' branch
+  pull_request:
+    branches:
+      - "master"
+jobs:
+  dry_release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: npm ci
+      - name: Dry Release
+        run: npx semantic-release
