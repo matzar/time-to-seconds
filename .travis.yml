@@ -5,7 +5,5 @@ node_js:
   - lts/*
 before_install:
   - npm install -g codecov
-  - npm install -g semantic-release
 script:
   - nyc --reporter=lcov mocha && codecov
-  - npx semantic-release
