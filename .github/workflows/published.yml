@@ -7,7 +7,8 @@ on:
 jobs:
   specific_review_requested:
     runs-on: ubuntu-latest
-    if: ${{ github.event.pull_request.title == 'feat*'}} && {{ github.event.pull_request.merged == true }}
+    if: ${{ github.event.pull_request.title == 'feat*'}}
+    # if: ${{ github.event.pull_request.title == 'feat*'}} && {{ github.event.pull_request.merged == true }}
     steps:
       - name: Print Title of PR
         run: echo The Title of your PR is ${{ github.event.pull_request.title }}
