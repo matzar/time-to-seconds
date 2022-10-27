@@ -1,6 +1,15 @@
 name: Published
 # trigger when a new tag is created
-on: [release]
+on:
+  release:
+    types:
+      - created
+      - edited
+      - prereleased
+      - released
+      - published
+      - unpublished
+      - deleted
 
 jobs:
   release:
