@@ -1,6 +1,6 @@
 # time-to-seconds
 
-[![Build Status](https://travis-ci.com/matzar/time-to-seconds.svg?branch=master)](https://travis-ci.com/github/matzar/time-to-seconds)
+[![Release](https://github.com/matzar/time-to-seconds/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/matzar/time-to-seconds/actions/workflows/release.yml)
 [![codecov](https://codecov.io/gh/matzar/time-to-seconds/branch/master/graph/badge.svg?token=EUYZLw2SLo)](https://codecov.io/gh/matzar/time-to-seconds)
 [![CodeFactor](https://www.codefactor.io/repository/github/matzar/time-to-seconds/badge)](https://www.codefactor.io/repository/github/matzar/time-to-seconds)
 [![NPM Version](https://img.shields.io/npm/v/time-to-seconds)](https://www.npmjs.com/package/time-to-seconds)
