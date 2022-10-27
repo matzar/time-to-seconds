@@ -5,13 +5,20 @@ on:
     types: [closed]
 
 jobs:
-  specific_review_requested:
+  print_title_of_pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Title of PR
+        run: echo The Title of your PR is ${{ github.event.pull_request.title }}
+
+  if_closed_pr_name_feat:
     runs-on: ubuntu-latest
     if: ${{ github.event.pull_request.title == 'feat*'}}
     # if: ${{ github.event.pull_request.title == 'feat*'}} && {{ github.event.pull_request.merged == true }}
     steps:
       - name: Print Title of PR
         run: echo The Title of your PR is ${{ github.event.pull_request.title }}
+
   release:
     name: Release
     runs-on: ubuntu-latest
