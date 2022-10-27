@@ -1,9 +1,9 @@
 name: Dry Release
 on:
-  # on create a PR to 'main' branch
+  # on create a PR to 'master' branch
   pull_request:
     branches:
-      - "main"
+      - "master"
 jobs:
   dry_release:
     runs-on: ubuntu-latest
