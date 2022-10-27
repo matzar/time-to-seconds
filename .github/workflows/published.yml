@@ -1,17 +1,16 @@
 name: Published
-# trigger when a new tag is created
+# trigger when merging 'feature' branch to 'master'
 on:
-  release:
-    types:
-      - created
-      - edited
-      - prereleased
-      - released
-      - published
-      - unpublished
-      - deleted
+  pull_request:
+    types: [closed]
 
 jobs:
+  specific_review_requested:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.title == 'feat*'}} && {{ github.event.pull_request.merged == true }}
+    steps:
+      - name: Print Title of PR
+        run: echo The Title of your PR is ${{ github.event.pull_request.title }}
   release:
     name: Release
     runs-on: ubuntu-latest
