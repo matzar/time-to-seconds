@@ -15,13 +15,19 @@
 ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/time-to-seconds)
 [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
-Unopinionated time to seconds converter that lets you decide the format of your `h:m:s`; as long as you keep the number of colons between `0` and `2` it does not matter if you use `"hh:mm:ss"`, `"h:m:s"` or `"hhh:mmmm:ssss"` format - you will always get the number of seconds back as an integer. 
+Unopinionated time to seconds converter that lets you decide the format of your `h:m:s`; as long as you keep the number of colons between `0` and `2` it does not matter if you use `"hh:mm:ss"`, `"h:m:s"` or `"hhh:mmmm:ssss"` format - you will always get the number of seconds back as an integer.
 
-## Installation
+## Documentation
 
-```
-$ npm i time-to-seconds
-```
+- [time-to-seconds](#time-to-seconds)
+  - [Documentation](#documentation)
+  - [Usage](#usage)
+  - [Examples](#examples)
+  - [Empty Strings](#empty-strings)
+  - [Error Handling](#error-handling)
+  - [Decimal Numbers](#decimal-numbers)
+  - [Math](#math)
+  - [License](#license)
 
 ## Usage
 
@@ -146,16 +152,3 @@ timeToSeconds(`${Math.log10(100).toString()}:`);
 ## License
 
 MIT
-
-## Documentation
-
-- [time-to-seconds](#time-to-seconds)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Examples](#examples)
-  - [Empty Strings](#empty-strings)
-  - [Error Handling](#error-handling)
-  - [Decimal Numbers](#decimal-numbers)
-  - [Math](#math)
-  - [License](#license)
-  - [Documentation](#documentation)
