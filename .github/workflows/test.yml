@@ -1,0 +1,12 @@
+name: Published
+on:
+  release:
+    types: [published]
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Dependencies
+        run: echo "This should be triggered when a release is published"
