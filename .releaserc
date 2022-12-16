@@ -71,7 +71,7 @@
       "@semantic-release/github",
       {
         "releasedLabels": [
-          "released<%= nextRelease.channel ?  on @${nextRelease.channel}` : \"\" %>"
+          "${nextRelease.version}"
         ],
         "assets": [
           {
