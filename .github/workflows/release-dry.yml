@@ -1,11 +1,9 @@
 name: Dry Release
 on:
-  # on create a PR to 'master' branch
   pull_request:
-    branches:
-      - "master"
 jobs:
-  dry_release:
+  release:
+    name: Dry Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -22,4 +20,5 @@ jobs:
       - name: Dry Release
         run: npx semantic-release
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
