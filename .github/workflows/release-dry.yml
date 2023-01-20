@@ -21,3 +21,5 @@ jobs:
         
       - name: Dry Release
         run: npx semantic-release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
