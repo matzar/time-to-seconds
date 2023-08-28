@@ -1,5 +1,5 @@
 {
-  "name": "time-to-seconds",
+  "name": "@matzar/time-to-seconds",
   "version": "0.0.0",
   "description": "Non-strict format, time to seconds converter ",
   "main": "index.js",
