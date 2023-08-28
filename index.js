@@ -1,7 +1,7 @@
 "use strict";
 
-module.exports = function (seconds) {
-  let timeArray = seconds.split(":");
+module.exports = function (timeString) {
+  let timeArray = timeString.split(":");
 
   if (timeArray.some((val) => Number.isNaN(Number(val))))
     throw new TypeError(
