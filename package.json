@@ -42,7 +42,7 @@
   "homepage": "https://github.com/matzar/time-to-seconds#readme",
   "devDependencies": {
     "chai": "^4.3.10",
-    "mocha": "^10.2.0",
+    "mocha": "^10.4.0",
     "nyc": "^15.1.0"
   }
 }
