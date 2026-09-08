@@ -1,4 +1,8 @@
+# Auto-merges Dependabot pull requests once the required checks pass.
+# Everything this repo depends on is a devDependency, so patch and minor bumps
+# are merged automatically; majors are left for a human to look at.
 name: Dependabot auto-merge
+
 on: pull_request
 
 permissions:
@@ -8,16 +12,19 @@ permissions:
 jobs:
   dependabot:
     runs-on: ubuntu-latest
-    if: github.actor == 'dependabot[bot]'
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
     steps:
       - name: Dependabot metadata
         id: metadata
-        uses: dependabot/fetch-metadata@v2
+        uses: dependabot/fetch-metadata@v3
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
+
       - name: Enable auto-merge for Dependabot PRs
-        if: contains(steps.metadata.outputs.dependency-names, 'my-dependency') && steps.metadata.outputs.update-type == 'version-update:semver-patch'
-        run: gh pr merge --auto --merge "$PR_URL"
+        if: |
+          steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
+          steps.metadata.outputs.update-type == 'version-update:semver-minor'
+        run: gh pr merge --auto --squash "$PR_URL"
         env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

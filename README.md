@@ -19,13 +19,33 @@ Unopinionated time to seconds converter that lets you decide the format of your 
 
 - [time-to-seconds](#time-to-seconds)
   - [Documentation](#documentation)
+  - [Install](#install)
   - [Usage](#usage)
   - [Examples](#examples)
   - [Empty Strings](#empty-strings)
   - [Error Handling](#error-handling)
   - [Decimal Numbers](#decimal-numbers)
   - [Math](#math)
+  - [TypeScript](#typescript)
   - [License](#license)
+
+## Install
+
+```sh
+npm install time-to-seconds
+```
+
+Requires Node.js 20 or newer. The package ships as CommonJS with no runtime
+dependencies, and works from both `require` and `import`:
+
+```js
+const timeToSeconds = require("time-to-seconds");
+// or
+import timeToSeconds from "time-to-seconds";
+```
+
+The same package is also published to GitHub Packages as
+`@matzar/time-to-seconds`, for anyone who prefers to install from there.
 
 ## Usage
 
@@ -145,6 +165,17 @@ timeToSeconds(`${num.toString()}:`);
 
 timeToSeconds(`${Math.log10(100).toString()}:`);
 // => 120
+```
+
+## TypeScript
+
+Type declarations ship with the package, so no `@types/` install is needed:
+
+```ts
+import timeToSeconds from "time-to-seconds";
+
+const seconds: number = timeToSeconds("2:2:2");
+// => 7322
 ```
 
 ## License
