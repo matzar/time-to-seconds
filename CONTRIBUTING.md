@@ -43,8 +43,11 @@ On every push to `master`, [`release.yml`](.github/workflows/release.yml):
 3. writes `CHANGELOG.md` and commits it with `package.json` back to `master`
    (with `[skip ci]`, so it does not retrigger itself)
 4. publishes `time-to-seconds` to npmjs.com
-5. publishes `@matzar/time-to-seconds` to GitHub Packages via
-   [`scripts/publish-gpr.sh`](scripts/publish-gpr.sh)
+5. mirrors the build to GitHub Packages as `@matzar/time-to-seconds`, via
+   [`scripts/publish-gpr.sh`](scripts/publish-gpr.sh). npmjs.com is the primary
+   registry and this step is best-effort: by the time it runs, npm has already
+   been published and the tag pushed, so a failure here raises a workflow
+   warning rather than aborting and stranding the tag.
 6. creates the git tag and the GitHub release
 
 ## One-time setup
