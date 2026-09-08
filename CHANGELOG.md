@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/matzar/time-to-seconds/compare/v2.3.0...v2.3.1) (2026-09-08)
+
+
+### Bug Fixes
+
+* authenticate the GitHub Packages mirror via command-line config ([#75](https://github.com/matzar/time-to-seconds/issues/75)) ([8707f77](https://github.com/matzar/time-to-seconds/commit/8707f7727532d8bca745b44877b3be7acd18f0ca))
+
 # [2.3.0](https://github.com/matzar/time-to-seconds/compare/v2.2.4...v2.3.0) (2026-09-08)
 
 
