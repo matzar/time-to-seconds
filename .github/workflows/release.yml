@@ -1,26 +1,68 @@
+# Publishes a semantic-release on every push to master:
+#   - version decided from the conventional-commit history
+#   - CHANGELOG.md and package.json committed back to master
+#   - unscoped "time-to-seconds" published to npmjs.com
+#   - scoped "@matzar/time-to-seconds" published to GitHub Packages
+#
+# Publishing to npm uses trusted publishing (OIDC), not a long-lived token:
+# @semantic-release/npm exchanges this workflow's OIDC id-token for a
+# short-lived npm token, which is why "id-token: write" is required and no
+# NPM_TOKEN secret appears anywhere below. npm is retiring 2FA-bypass tokens
+# for publishing in January 2027, so this is the path that keeps working.
+# The npmjs.com side needs a trusted publisher configured for this repo and
+# this workflow file - see CONTRIBUTING.md.
 name: Release
+
 on:
   push:
     branches:
       - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # git tags, GitHub releases, @semantic-release/git
+      issues: write # release comments on issues
+      pull-requests: write # release comments on PRs
+      packages: write # publish to GitHub Packages
+      id-token: write # OIDC trusted publishing to npmjs.com
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Use Node.js 20
-        uses: actions/setup-node@v3
+        uses: actions/checkout@v7
         with:
-          node-version: "20"
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: "npm"
 
       - name: Install Dependencies
         run: npm ci
 
+      - name: Test
+        run: npm test
+
       - name: Release
         run: npx semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # RELEASE_TOKEN is a PAT, needed only so @semantic-release/git can
+          # push the release commit past branch protection on master. Without
+          # it the release aborts in the prepare step, before anything is
+          # published, so a missing PAT can never leave a half-done release.
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
+          # Always the workflow's own token: GitHub Packages needs the
+          # repository-scoped token, not the PAT above.
+          GPR_TOKEN: ${{ secrets.GITHUB_TOKEN }}

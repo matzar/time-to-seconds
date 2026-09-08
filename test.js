@@ -1,277 +1,145 @@
 "use strict";
 
-var chai = require("chai");
-var expect = chai.expect;
+const { describe, it } = require("node:test");
+const assert = require("node:assert/strict");
 
-var timeToSeconds = require("./");
+const timeToSeconds = require("./");
+
+const WRONG_TYPE_MESSAGE =
+  'time-to-seconds: wrong argument type - something else than a number string in format "number", "number:number" or "number:number:number" was passed. See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.';
+
+const TOO_MANY_COLONS_MESSAGE =
+  'time-to-seconds: too many colons - make sure the function argument is a number string in format "number", "number:number" or "number:number:number". See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.';
+
+// A 200-digit zero-padded "2", to prove padding is irrelevant.
+const PADDED_TWO = "2".padStart(201, "0");
 
 describe("timeToSeconds", () => {
-  it('should return error - wrong argument type - something else than a number string, in format "number" or "number:number" or "number:number:number", was passed', () => {
-    expect(function () {
-      timeToSeconds("asd");
-    }).to.throw(
-      'time-to-seconds: wrong argument type - something else than a number string in format "number", "number:number" or "number:number:number" was passed. See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
-    );
+  describe("throws on non-numeric input", () => {
+    const inputs = [
+      "asd",
+      "a:s:d",
+      "2:s:d",
+      "!@#$!@#$%#^&$*%$%#&$^@#!%@",
+      "2:#$%:d",
+      "123a",
+    ];
+
+    for (const input of inputs) {
+      it(`rejects ${JSON.stringify(input)}`, () => {
+        assert.throws(() => timeToSeconds(input), {
+          name: "TypeError",
+          message: WRONG_TYPE_MESSAGE,
+        });
+      });
+    }
   });
 
-  it('should return error - wrong argument type - something else than a number string, in format "number" or "number:number" or "number:number:number", was passed', () => {
-    expect(function () {
-      timeToSeconds("a:s:d");
-    }).to.throw(
-      'time-to-seconds: wrong argument type - something else than a number string in format "number", "number:number" or "number:number:number" was passed. See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
-    );
+  describe("throws on too many colons", () => {
+    const inputs = ["1:2:2:4", "1:2:2:4:5", ":::", "::::"];
+
+    for (const input of inputs) {
+      it(`rejects ${JSON.stringify(input)}`, () => {
+        assert.throws(() => timeToSeconds(input), {
+          name: "TypeError",
+          message: TOO_MANY_COLONS_MESSAGE,
+        });
+      });
+    }
   });
 
-  it('should return error - wrong argument type - something else than a number string, in format "number" or "number:number" or "number:number:number", was passed', () => {
-    expect(function () {
-      timeToSeconds("2:s:d");
-    }).to.throw(
-      'time-to-seconds: wrong argument type - something else than a number string in format "number", "number:number" or "number:number:number" was passed. See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
-    );
+  describe("converts h:m:s", () => {
+    const cases = [
+      ["2:2:2", 7322],
+      ["02:02:02", 7322],
+      ["2:02:02", 7322],
+      ["2:2:02", 7322],
+      ["02:2:02", 7322],
+      ["2:02:2", 7322],
+      [`${PADDED_TWO}:${PADDED_TWO}:${PADDED_TWO}`, 7322],
+    ];
+
+    for (const [input, expected] of cases) {
+      it(`converts ${JSON.stringify(input)} to ${expected}`, () => {
+        assert.equal(timeToSeconds(input), expected);
+      });
+    }
   });
 
-  it('should return error - wrong argument type - something else than a number string, in format "number" or "number:number" or "number:number:number", was passed', () => {
-    expect(function () {
-      timeToSeconds("!@#$!@#$%#^&$*%$%#&$^@#!%@");
-    }).to.throw(
-      'time-to-seconds: wrong argument type - something else than a number string in format "number", "number:number" or "number:number:number" was passed. See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
-    );
+  describe("converts m:s", () => {
+    const cases = [
+      ["2:", 120],
+      ["2:00", 120],
+      ["02:0", 120],
+      ["02:00", 120],
+      [":2", 2],
+      ["0:2", 2],
+      [":02", 2],
+      ["00:02", 2],
+      ["0:02", 2],
+      ["000:2", 2],
+    ];
+
+    for (const [input, expected] of cases) {
+      it(`converts ${JSON.stringify(input)} to ${expected}`, () => {
+        assert.equal(timeToSeconds(input), expected);
+      });
+    }
   });
 
-  it('should return error - wrong argument type - something else than a number string, in format "number" or "number:number" or "number:number:number", was passed', () => {
-    expect(function () {
-      timeToSeconds("2:#$%:d");
-    }).to.throw(
-      'time-to-seconds: wrong argument type - something else than a number string in format "number", "number:number" or "number:number:number" was passed. See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
-    );
+  describe("converts s", () => {
+    const cases = [
+      ["2", 2],
+      ["0", 0],
+    ];
+
+    for (const [input, expected] of cases) {
+      it(`converts ${JSON.stringify(input)} to ${expected}`, () => {
+        assert.equal(timeToSeconds(input), expected);
+      });
+    }
   });
 
-  it('should return error - wrong argument type - something else than a number string, in format "number" or "number:number" or "number:number:number", was passed', () => {
-    expect(function () {
-      timeToSeconds("123a");
-    }).to.throw(
-      'time-to-seconds: wrong argument type - something else than a number string in format "number", "number:number" or "number:number:number" was passed. See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
-    );
+  describe("treats empty segments as zero", () => {
+    const inputs = ["", ":0", "::0", ":", "::"];
+
+    for (const input of inputs) {
+      it(`converts ${JSON.stringify(input)} to 0`, () => {
+        assert.equal(timeToSeconds(input), 0);
+      });
+    }
   });
 
-  it("should return error - too many colons", () => {
-    expect(function () {
-      timeToSeconds("1:2:2:4");
-    }).to.throw(
-      'time-to-seconds: too many colons - make sure the function argument is a number string in format "number", "number:number" or "number:number:number". See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
-    );
+  describe("converts decimals", () => {
+    const cases = [
+      ["0.2:00", 12],
+      ["0.2:", 12],
+      ["0.2:00:00", 720],
+      ["0.2::", 720],
+      ["0.2:0.2:00", 732],
+      ["0.2:0.2:", 732],
+      ["0:0:0.2", 0.2],
+      ["0::0.2", 0.2],
+      [":0:0.2", 0.2],
+      ["::0.2", 0.2],
+      ["0.2", 0.2],
+    ];
+
+    for (const [input, expected] of cases) {
+      it(`converts ${JSON.stringify(input)} to ${expected}`, () => {
+        assert.equal(timeToSeconds(input), expected);
+      });
+    }
   });
 
-  it("should return error - too many colons", () => {
-    expect(function () {
-      timeToSeconds("1:2:2:4:5");
-    }).to.throw(
-      'time-to-seconds: too many colons - make sure the function argument is a number string in format "number", "number:number" or "number:number:number". See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
-    );
-  });
+  describe("accepts computed values", () => {
+    it("converts a value built from Math.log10", () => {
+      const num = Math.log10(100);
+      assert.equal(timeToSeconds(`${num.toString()}:`), 120);
+    });
 
-  it("should return error - too many colons", () => {
-    expect(function () {
-      timeToSeconds(":::");
-    }).to.throw(
-      'time-to-seconds: too many colons - make sure the function argument is a number string in format "number", "number:number" or "number:number:number". See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
-    );
-  });
-
-  it("should return error - too many colons", () => {
-    expect(function () {
-      timeToSeconds("::::");
-    }).to.throw(
-      'time-to-seconds: too many colons - make sure the function argument is a number string in format "number", "number:number" or "number:number:number". See documentation for more information on argument formatting: https://www.npmjs.com/package/time-to-seconds.'
-    );
-  });
-
-  it("Should return 7322", () => {
-    const seconds = timeToSeconds("2:2:2");
-    expect(seconds).to.be.equal(7322);
-  });
-
-  it("Should return 7322", () => {
-    const seconds = timeToSeconds("02:02:02");
-    expect(seconds).to.be.equal(7322);
-  });
-
-  it("Should return 7322", () => {
-    const seconds = timeToSeconds("2:02:02");
-    expect(seconds).to.be.equal(7322);
-  });
-
-  it("Should return 7322", () => {
-    const seconds = timeToSeconds("2:2:02");
-    expect(seconds).to.be.equal(7322);
-  });
-
-  it("Should return 7322", () => {
-    const seconds = timeToSeconds("02:2:02");
-    expect(seconds).to.be.equal(7322);
-  });
-
-  it("Should return 7322", () => {
-    const seconds = timeToSeconds("2:02:2");
-    expect(seconds).to.be.equal(7322);
-  });
-
-  it("Should return 7322", () => {
-    const seconds = timeToSeconds(
-      "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002:0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002:0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002"
-    );
-    expect(seconds).to.be.equal(7322);
-  });
-
-  it("Should return 120", () => {
-    const seconds = timeToSeconds("2:");
-    expect(seconds).to.be.equal(120);
-  });
-
-  it("Should return 120", () => {
-    const seconds = timeToSeconds("2:00");
-    expect(seconds).to.be.equal(120);
-  });
-
-  it("Should return 120", () => {
-    const seconds = timeToSeconds("02:0");
-    expect(seconds).to.be.equal(120);
-  });
-
-  it("Should return 120", () => {
-    const seconds = timeToSeconds("02:00");
-    expect(seconds).to.be.equal(120);
-  });
-
-  it("Should return 2", () => {
-    const seconds = timeToSeconds("2");
-    expect(seconds).to.be.equal(2);
-  });
-
-  it("Should return 2", () => {
-    const seconds = timeToSeconds(":2");
-    expect(seconds).to.be.equal(2);
-  });
-
-  it("Should return 2", () => {
-    const seconds = timeToSeconds("0:2");
-    expect(seconds).to.be.equal(2);
-  });
-
-  it("Should return 2", () => {
-    const seconds = timeToSeconds(":02");
-    expect(seconds).to.be.equal(2);
-  });
-
-  it("Should return 2", () => {
-    const seconds = timeToSeconds("00:02");
-    expect(seconds).to.be.equal(2);
-  });
-
-  it("Should return 2", () => {
-    const seconds = timeToSeconds("0:02");
-    expect(seconds).to.be.equal(2);
-  });
-
-  it("Should return 2", () => {
-    const seconds = timeToSeconds("000:2");
-    expect(seconds).to.be.equal(2);
-  });
-
-  it("Should return 0", () => {
-    const seconds = timeToSeconds("");
-    expect(seconds).to.be.equal(0);
-  });
-
-  it("Should return 0", () => {
-    const seconds = timeToSeconds("0");
-    expect(seconds).to.be.equal(0);
-  });
-
-  it("Should return 0", () => {
-    const seconds = timeToSeconds(":0");
-    expect(seconds).to.be.equal(0);
-  });
-
-  it("Should return 0", () => {
-    const seconds = timeToSeconds("::0");
-    expect(seconds).to.be.equal(0);
-  });
-
-  it("Should return 0", () => {
-    const seconds = timeToSeconds(":");
-    expect(seconds).to.be.equal(0);
-  });
-
-  it("Should return 0", () => {
-    const seconds = timeToSeconds("::");
-    expect(seconds).to.be.equal(0);
-  });
-
-  // Decimals
-  it("Should return 12", () => {
-    const seconds = timeToSeconds("0.2:00");
-    expect(seconds).to.be.equal(12);
-  });
-
-  it("Should return 12", () => {
-    const seconds = timeToSeconds("0.2:");
-    expect(seconds).to.be.equal(12);
-  });
-
-  it("Should return 720", () => {
-    const seconds = timeToSeconds("0.2:00:00");
-    expect(seconds).to.be.equal(720);
-  });
-
-  it("Should return 720", () => {
-    const seconds = timeToSeconds("0.2::");
-    expect(seconds).to.be.equal(720);
-  });
-
-  it("Should return 732", () => {
-    const seconds = timeToSeconds("0.2:0.2:00");
-    expect(seconds).to.be.equal(732);
-  });
-
-  it("Should return 732", () => {
-    const seconds = timeToSeconds("0.2:0.2:");
-    expect(seconds).to.be.equal(732);
-  });
-
-  it("Should return 0.2", () => {
-    const seconds = timeToSeconds("0:0:0.2");
-    expect(seconds).to.be.equal(0.2);
-  });
-
-  it("Should return 0.2", () => {
-    const seconds = timeToSeconds("0::0.2");
-    expect(seconds).to.be.equal(0.2);
-  });
-
-  it("Should return 0.2", () => {
-    const seconds = timeToSeconds(":0:0.2");
-    expect(seconds).to.be.equal(0.2);
-  });
-
-  it("Should return 0.2", () => {
-    const seconds = timeToSeconds("::0.2");
-    expect(seconds).to.be.equal(0.2);
-  });
-
-  it("Should return 0.2", () => {
-    const seconds = timeToSeconds("0.2");
-    expect(seconds).to.be.equal(0.2);
-  });
-
-  it("Should return 120", () => {
-    var num = Math.log10(100);
-    const seconds = timeToSeconds(`${num.toString()}:`);
-    expect(seconds).to.be.equal(120);
-  });
-
-  it("Should return 120", () => {
-    const seconds = timeToSeconds(`${Math.log10(100).toString()}:`);
-    expect(seconds).to.be.equal(120);
+    it("converts an inlined Math.log10 expression", () => {
+      assert.equal(timeToSeconds(`${Math.log10(100).toString()}:`), 120);
+    });
   });
 });
